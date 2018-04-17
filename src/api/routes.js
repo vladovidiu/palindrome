@@ -1,10 +1,8 @@
 const routes = require("express").Router();
+const middleware = require("../middleware");
 
-routes.get("/palindromes", (req, res, next) => {
-    res.status(200);
-    res.json({
-        message: "Hello Trinity",
-    });
-});
+routes
+    .post("/palindromes", middleware.addPalindrome)
+    .get("/palindromes", middleware.retrivePalindromes);
 
 module.exports = routes;

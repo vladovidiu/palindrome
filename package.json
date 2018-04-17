@@ -4,10 +4,12 @@
     "description": "Code-Test",
     "main": "index.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
+        "test": "mocha ./test/** --recursive --exit",
         "start": "node src/index.js",
-        "prettier": "prettier **/*.js --write",
-        "precommit": "lint-staged"
+        "prettier": "prettier **/*.jyarn s --write",
+        "precommit": "lint-staged",
+        "prepush": "npm test",
+        "docs": "aglio -i ./docs/blueprint.apib -o blueprint.html"
     },
     "lint-staged": {
         "*.js": ["prettier --write", "git add"]
@@ -24,6 +26,9 @@
     },
     "homepage": "https://github.com/vladovidiu/palindrome#readme",
     "devDependencies": {
+        "aglio": "^2.3.0",
+        "assert": "^1.4.1",
+        "chai": "^4.1.2",
         "eslint": "^4.19.1",
         "eslint-config-eslint": "^4.0.0",
         "eslint-config-google": "^0.9.1",
@@ -31,7 +36,11 @@
         "eslint-plugin-prettier": "^2.6.0",
         "husky": "^0.14.3",
         "lint-staged": "^7.0.4",
-        "prettier": "^1.12.1"
+        "mocha": "^5.1.0",
+        "prettier": "^1.12.1",
+        "proxyquire": "^1.8.0",
+        "sinon": "^4.5.0",
+        "supertest": "^3.0.0"
     },
     "dependencies": {
         "body-parser": "^1.18.2",
